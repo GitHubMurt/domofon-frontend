@@ -9,7 +9,10 @@ import ContactsService from './contactsService.js';
 
 const Root = React.createClass({
   getInitialState: function () {
-    return {name: 'world'};
+    return {name: 'world', contactObjects : [
+      {name: 'Barbara Bara', deputy: undefined},
+      {name: 'Jan Kowalski', deputy: {name: "Marcin", phone: "+48000111222"}}
+    ]};
   },
   componentDidMount: function() {
     CategoryService.getCategories(function (data) {
@@ -17,21 +20,23 @@ const Root = React.createClass({
           categoryName: data[0].name
         });
     }.bind(this));
+
+    ContactsService.getContacts(function (data) {
+      this.setState({
+        contactObjects: data
+      });
+    }.bind(this));
   },
   setName: function (name) {
     this.setState({name});
   },
   render: function () {
-    const contactObjects = [
-      {name: 'Barbara Bara', deputy: undefined},
-      {name: 'Jan Kowalski', deputy: {name: "Marcin", phone: "+48000111222"}}
-    ];
     return (
       <div>
         <Title name={this.state.name} />        
         <NameInput initialName={this.state.name} onNameChanged={this.setName} />
         <CategoryButton initialName={this.state.name} />
-        <ContactsList objects={contactObjects}/>
+        <ContactsList objects={this.state.contactObjects}/>
       </div>
     );
   }
