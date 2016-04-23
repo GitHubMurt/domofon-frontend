@@ -8,7 +8,8 @@ function contactService()
     var service = {
         getContacts: getContacts,
         getContact: getContact,
-        addContact: addContact
+        addContact: addContact,
+        notifyContact: notifyContact
     };
     
     return service;
@@ -64,6 +65,28 @@ function contactService()
             },
             success: function (data) {        
                 callback(data);
+            }
+        });
+    }
+
+    function notifyContact (contact, callback) {
+        Reqwest({
+            url: Constants.BACKEND_URL + serviceMethod + "/" + contact.id + "/notify",
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            type: 'json',
+            // data: JSON.stringify({
+            //     contact
+            // }),
+            error: function (err) {
+                console.log(err);
+            },
+            success: function (data) {
+                if (callback)
+                    callback(data);
             }
         });
     }
