@@ -1,3 +1,5 @@
-node_modules
+node_modules/
+.idea/
 dist
 deploy
+akka-http-mock-server-0.5.0/
