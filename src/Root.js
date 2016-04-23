@@ -16,7 +16,7 @@ const Root = React.createClass({
       this.setState({
           categoryName: data[0].name
         });
-    }.bind(this))
+    }.bind(this));
   },
   setName: function (name) {
     this.setState({name});

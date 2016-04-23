@@ -3,8 +3,11 @@ import Constants from './constants.js';
 
 function contactService()
 {
+    var serviceMethod = 'contacts';
+    
     var service = {
         getContacts: getContacts,
+        getContact: getContact,
         addContact: addContact
     };
     
@@ -12,7 +15,20 @@ function contactService()
     
     function getContacts(callback) {
         Reqwest({
-            url: Constants.BACKEND_URL + 'contacts',
+            url: Constants.BACKEND_URL + serviceMethod,
+            method: 'get',
+            error: function (err) {
+                console.log(err);
+            },
+            success: function (data) {
+                callback(data);
+            }
+        })
+    }
+    
+    function getContact(id, callback) {
+        Reqwest({
+            url: Constants.BACKEND_URL + serviceMethod + '/' + id,
             method: 'get',
             error: function (err) {
                 console.log(err);
@@ -25,7 +41,7 @@ function contactService()
     
     function addContact (contact, callback) {
         Reqwest({
-            url: Constants.BACKEND_URL + 'contacts',
+            url: Constants.BACKEND_URL + serviceMethod,
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
