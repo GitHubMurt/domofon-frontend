@@ -31,7 +31,7 @@ function categoryService()
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'text/plain',
-                'Authorization': 'Bearer 3be4fc7f-4718-4b42-a644-eef79a1ff369'
+                'Authorization': 'Bearer ' + Constants.AUTHORIZATION_ID
             },
             type: 'json',
             data: JSON.stringify({
