@@ -1,39 +1,45 @@
 import Reqwest from 'reqwest';
+import Constants from './constants.js';
 
 function categoryService()
-{
+{    
     var service = {
-        getCategory: getCategory,
+        getCategories: getCategories,
         addCategory: addCategory
     };
     
     return service;
     
-    function getCategory(callback) {
+    function getCategories(callback) {
         Reqwest({
-            url: 'http://localhost:8080/categories',
+            url: Constants.BACKEND_URL + 'categories',
             method: 'get',
+            error: function (err) {
+                console.log(err);
+            },
             success: function (data) {
+                console.log(Constants.BACKEND_URL + 'categories',);
                 callback(data);
             }
         })
     }
     
-    function addCategory(callback){
+    function addCategory(category, callback){
         Reqwest({
-            url: 'http://localhost:8080/categories',
-            method: 'POST',
+            url: Constants.BACKEND_URL + 'categories',
+            method: 'post',
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'text/plain',
-                'Authorization': 'Bearer 3be4fc7f-4718-4b42-a644-eef79a1ff369' 
+                'Authorization': 'Bearer 3be4fc7f-4718-4b42-a644-eef79a1ff369'
             },
             type: 'json',
             data: JSON.stringify({
-                name:'Test',
-                description:'Test',
-                isIndividual:false,
-                message:'Test message'
+                category
+                //name: 'Test',
+                //description: 'Test',
+                //isIndividual: false,
+                //message: 'Test message'
             }),
             error: function (err) {
                 console.log(err);
