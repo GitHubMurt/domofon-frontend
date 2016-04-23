@@ -1,13 +1,11 @@
 import React from 'react';
 import Title from './Title.js';
 import NameInput from './NameInput.js';
-<<<<<<< 5391669ff5829375e6e054577717e38deb29d582
 import CategoryButton from './CategoryButton.js';
 import ContactsList from './ContactsList.js';
-=======
 import CategoryService from './categoryService.js';
 import ContactsService from './contactsService.js';
->>>>>>> Add contact service and further improvements.
+
 
 const Root = React.createClass({
   getInitialState: function () {
