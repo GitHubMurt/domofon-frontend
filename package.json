@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
-    "start": "./node_modules/.bin/webpack-dev-server --content-base dist",
+    "start": "./node_modules/.bin/webpack-dev-server --port 9000 --content-base dist",
     "postinstall": "./node_modules/.bin/typings install"
   },
   "repository": {
@@ -49,7 +49,6 @@
     "node-libs-browser": "^1.0.0",
     "raw-loader": "0.5.1",
     "ts-loader": "^0.8.2",
-    "typescript": "^1.8.10",
     "typescript": "^1.8.10",
     "typings":"^0.7.12",
     "webpack": "^1.12.14",
