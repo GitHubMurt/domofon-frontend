@@ -20,4 +20,4 @@ npm run build
 
 # Deploying to github.io
 
-After you commit TravisCI builds an app and deploys it to http://blstream.github.io/domofon-frontend/angular2
+After you commit TravisCI builds an app and deploys it to http://blstream.github.io/domofon-frontend/angular2.
