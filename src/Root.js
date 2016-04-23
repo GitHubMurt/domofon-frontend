@@ -1,6 +1,7 @@
 import React from 'react';
 import Title from './Title.js';
 import NameInput from './NameInput.js';
+import CategoryButton from './CategoryButton.js';
 
 const Root = React.createClass({
   getInitialState: function () {
@@ -14,6 +15,7 @@ const Root = React.createClass({
       <div>
         <Title name={this.state.name} />
         <NameInput initialName={this.state.name} onNameChanged={this.setName} />
+        <CategoryButton initialName={this.state.name} />
       </div>
     );
   }
